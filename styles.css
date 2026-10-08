@@ -596,6 +596,8 @@ input[type="number"] { -moz-appearance: textfield; }
   .step-num { width: 34px; height: 34px; font-size: .875rem; }
 
   .ap-header { flex-direction: column; align-items: flex-start; gap: var(--sp-sm); }
+
+  .toast { white-space: normal; border-radius: 16px; text-align: center; }
 }
 
 /* ============================================================
