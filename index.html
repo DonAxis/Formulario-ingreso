@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FC2 – Historia Clínica | Clínica de la Ansiedad y Salud Mental</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="page">
+
+  <!-- ══ ENCABEZADO DEL DOCUMENTO ══ -->
+  <header class="doc-header">
+    <div class="logo-wrap">
+      <svg class="logo-icon" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="36" cy="36" r="33" stroke="#B5291E" stroke-width="2.5" fill="none"/>
+        <ellipse cx="36" cy="36" rx="18" ry="16" fill="#FDECEB" stroke="#B5291E" stroke-width="1.8"/>
+        <path d="M26 30 C26 24 31 21 36 23 C41 21 46 24 46 30" stroke="#B5291E" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        <path d="M22 36 C24 32 29 31 33 33 C35 34 37 34 39 33 C43 31 48 32 50 36" stroke="#B5291E" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        <path d="M26 42 C28 47 32 49 36 48" stroke="#B5291E" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        <path d="M46 42 C44 47 40 49 36 48" stroke="#B5291E" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        <circle cx="36" cy="36" r="2.5" fill="#B5291E"/>
+      </svg>
+      <div class="clinic-name-stack">
+        <span class="cn-main">clínica</span>
+        <span class="cn-sub">de la ansiedad</span>
+        <span class="cn-sub">y salud mental</span>
+        <span class="cn-cofepris">Registro Cofepris 183300536X3541</span>
+      </div>
+    </div>
+
+    <div class="form-meta">
+      <h1 class="form-title">FC2 – Historia Clínica</h1>
+      <div class="meta-fields">
+        <div class="meta-field meta-full">
+          <span class="meta-label">Nombre del paciente:</span>
+          <input type="text" name="encabezado_nombre_paciente" autocomplete="off">
+        </div>
+        <div class="meta-row">
+          <div class="meta-field meta-grow">
+            <span class="meta-label">Expediente:</span>
+            <input type="text" name="encabezado_expediente" autocomplete="off">
+          </div>
+          <div class="meta-field">
+            <span class="meta-label">Fecha:</span>
+            <input type="date" name="encabezado_fecha">
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <p class="instruction">
+    Favor de llenar los rubros que a continuación se presentan. En caso de dificultades con el llenado del
+    formato acercarse con el personal de Clínica para orientación.
+  </p>
+
+  <form id="fc2" novalidate>
+
+    <!-- ══════════════════════════════════════════
+         1. FICHA DE IDENTIFICACIÓN
+         ══════════════════════════════════════════ -->
+    <section class="form-section">
+      <h2 class="section-title">1. Ficha de Identificación</h2>
+      <div class="form-grid">
+
+        <div class="fg col-3">
+          <label for="nombre_paciente">Nombre del paciente <span class="req">*</span></label>
+          <input type="text" id="nombre_paciente" name="nombre_paciente" required>
+        </div>
+        <div class="fg col-1">
+          <label for="nombre_tutor">Nombre del tutor <small>(menores de edad)</small></label>
+          <input type="text" id="nombre_tutor" name="nombre_tutor">
+        </div>
+
+        <div class="fg col-1">
+          <label for="sexo">Sexo <span class="req">*</span></label>
+          <select id="sexo" name="sexo" required>
+            <option value="">— Seleccionar —</option>
+            <option>Masculino</option>
+            <option>Femenino</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div class="fg col-1">
+          <label for="edad">Edad <span class="req">*</span></label>
+          <input type="number" id="edad" name="edad" min="0" max="120" required>
+        </div>
+        <div class="fg col-1">
+          <label for="fecha_nacimiento">Fecha de nacimiento <span class="req">*</span></label>
+          <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
+        </div>
+        <div class="fg col-1">
+          <label for="lugar_nacimiento">Lugar de nacimiento</label>
+          <input type="text" id="lugar_nacimiento" name="lugar_nacimiento" placeholder="Ciudad, Estado, País">
+        </div>
+
+        <div class="fg col-1">
+          <label for="estado_civil">Estado civil <span class="req">*</span></label>
+          <select id="estado_civil" name="estado_civil" required>
+            <option value="">— Seleccionar —</option>
+            <option>Soltero/a</option>
+            <option>Casado/a</option>
+            <option>Divorciado/a</option>
+            <option>Viudo/a</option>
+            <option>Unión libre</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div class="fg col-1">
+          <label for="religion">Religión</label>
+          <input type="text" id="religion" name="religion">
+        </div>
+        <div class="fg col-1">
+          <label for="escolaridad">Escolaridad <span class="req">*</span></label>
+          <select id="escolaridad" name="escolaridad" required>
+            <option value="">— Seleccionar —</option>
+            <option>Sin escolaridad</option>
+            <option>Primaria</option>
+            <option>Secundaria</option>
+            <option>Preparatoria</option>
+            <option>Licenciatura</option>
+            <option>Posgrado</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div class="fg col-1">
+          <label for="ocupacion">Ocupación <span class="req">*</span></label>
+          <input type="text" id="ocupacion" name="ocupacion" required>
+        </div>
+
+        <div class="fg col-4">
+          <label for="domicilio">Domicilio <span class="req">*</span></label>
+          <input type="text" id="domicilio" name="domicilio" placeholder="Calle, número, colonia, C.P., Ciudad" required>
+        </div>
+
+        <div class="fg col-1">
+          <label for="tel_movil">Teléfono móvil <span class="req">*</span></label>
+          <input type="tel" id="tel_movil" name="telefono_movil" pattern="[0-9]{10}" maxlength="10" placeholder="10 dígitos" required>
+        </div>
+        <div class="fg col-1">
+          <label for="tel_fijo">Teléfono fijo</label>
+          <input type="tel" id="tel_fijo" name="telefono_fijo" pattern="[0-9]{10}" maxlength="10" placeholder="10 dígitos">
+        </div>
+        <div class="fg col-2">
+          <label for="email">Email <span class="req">*</span></label>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="fg col-4">
+          <label for="motivo_consulta">Motivo de consulta <span class="req">*</span></label>
+          <textarea id="motivo_consulta" name="motivo_consulta" rows="3" required></textarea>
+        </div>
+
+        <div class="fg col-2">
+          <label for="medio_enterado">Medio por el cual se enteró de la clínica</label>
+          <select id="medio_enterado" name="medio_enterado_clinica">
+            <option value="">— Seleccionar —</option>
+            <option>Redes sociales</option>
+            <option>Recomendación</option>
+            <option>Búsqueda web</option>
+            <option>Publicidad</option>
+            <option>Otro</option>
+          </select>
+        </div>
+
+        <div class="fg col-4">
+          <label for="mejora_vida">¿De qué manera la clínica puede mejorar su vida?</label>
+          <textarea id="mejora_vida" name="mejora_vida_esperada" rows="3"></textarea>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         2. ANTECEDENTES HEREDOFAMILIARES
+         ══════════════════════════════════════════ -->
+    <section class="form-section">
+      <h2 class="section-title">2. Antecedentes Heredofamiliares</h2>
+
+      <table class="med-table">
+        <thead>
+          <tr>
+            <th rowspan="2" class="col-label"></th>
+            <th colspan="2" class="col-vive-grp">¿Vive?</th>
+            <th rowspan="2" class="col-desc">Enfermedades actuales y/o causa de defunción</th>
+          </tr>
+          <tr>
+            <th class="col-yn">Sí</th>
+            <th class="col-yn">No</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Madre</th>
+            <td class="rc"><input type="radio" name="madre_vive" value="true"  aria-label="Madre vive: Sí"></td>
+            <td class="rc"><input type="radio" name="madre_vive" value="false" aria-label="Madre vive: No"></td>
+            <td><input type="text" name="madre_descripcion" class="tbl-input"></td>
+          </tr>
+          <tr>
+            <th scope="row">Padre</th>
+            <td class="rc"><input type="radio" name="padre_vive" value="true"  aria-label="Padre vive: Sí"></td>
+            <td class="rc"><input type="radio" name="padre_vive" value="false" aria-label="Padre vive: No"></td>
+            <td><input type="text" name="padre_descripcion" class="tbl-input"></td>
+          </tr>
+          <tr>
+            <th scope="row">Hermanos</th>
+            <td class="rc"><input type="radio" name="hermanos_vive" value="true"  aria-label="Hermanos viven: Sí"></td>
+            <td class="rc"><input type="radio" name="hermanos_vive" value="false" aria-label="Hermanos viven: No"></td>
+            <td><input type="text" name="hermanos_descripcion" class="tbl-input"></td>
+          </tr>
+          <tr>
+            <th scope="row">Abuelo Paterno</th>
+            <td class="rc"><input type="radio" name="abuelo_paterno_vive" value="true"  aria-label="Abuelo Paterno vive: Sí"></td>
+            <td class="rc"><input type="radio" name="abuelo_paterno_vive" value="false" aria-label="Abuelo Paterno vive: No"></td>
+            <td><input type="text" name="abuelo_paterno_descripcion" class="tbl-input"></td>
+          </tr>
+          <tr>
+            <th scope="row">Abuela Paterna</th>
+            <td class="rc"><input type="radio" name="abuela_paterna_vive" value="true"  aria-label="Abuela Paterna vive: Sí"></td>
+            <td class="rc"><input type="radio" name="abuela_paterna_vive" value="false" aria-label="Abuela Paterna vive: No"></td>
+            <td><input type="text" name="abuela_paterna_descripcion" class="tbl-input"></td>
+          </tr>
+          <tr>
+            <th scope="row">Abuelo Materno</th>
+            <td class="rc"><input type="radio" name="abuelo_materno_vive" value="true"  aria-label="Abuelo Materno vive: Sí"></td>
+            <td class="rc"><input type="radio" name="abuelo_materno_vive" value="false" aria-label="Abuelo Materno vive: No"></td>
+            <td><input type="text" name="abuelo_materno_descripcion" class="tbl-input"></td>
+          </tr>
+          <tr>
+            <th scope="row">Abuela Materna</th>
+            <td class="rc"><input type="radio" name="abuela_materna_vive" value="true"  aria-label="Abuela Materna vive: Sí"></td>
+            <td class="rc"><input type="radio" name="abuela_materna_vive" value="false" aria-label="Abuela Materna vive: No"></td>
+            <td><input type="text" name="abuela_materna_descripcion" class="tbl-input"></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         3. ANTECEDENTES PERSONALES PATOLÓGICOS
+         ══════════════════════════════════════════ -->
+    <section class="form-section">
+      <h2 class="section-title">3. Antecedentes Personales Patológicos</h2>
+
+      <table class="med-table">
+        <thead>
+          <tr>
+            <th class="col-label"></th>
+            <th class="col-yn">Sí</th>
+            <th class="col-yn">No</th>
+            <th class="col-desc">Descripción del suceso</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Hospitalizaciones</th>
+            <td class="rc"><input type="radio" name="hospitalizaciones" value="true"  class="cr" data-target="hospitalizaciones_desc" aria-label="Hospitalizaciones: Sí"></td>
+            <td class="rc"><input type="radio" name="hospitalizaciones" value="false" class="cr" data-target="hospitalizaciones_desc" aria-label="Hospitalizaciones: No"></td>
+            <td><textarea name="hospitalizaciones_descripcion" id="hospitalizaciones_desc" rows="2" class="tbl-ta" disabled></textarea></td>
+          </tr>
+          <tr>
+            <th scope="row">Quirúrgicos</th>
+            <td class="rc"><input type="radio" name="quirurgicos" value="true"  class="cr" data-target="quirurgicos_desc" aria-label="Quirúrgicos: Sí"></td>
+            <td class="rc"><input type="radio" name="quirurgicos" value="false" class="cr" data-target="quirurgicos_desc" aria-label="Quirúrgicos: No"></td>
+            <td><textarea name="quirurgicos_descripcion" id="quirurgicos_desc" rows="2" class="tbl-ta" disabled></textarea></td>
+          </tr>
+          <tr>
+            <th scope="row">Alérgicos</th>
+            <td class="rc"><input type="radio" name="alergicos" value="true"  class="cr" data-target="alergicos_desc" aria-label="Alérgicos: Sí"></td>
+            <td class="rc"><input type="radio" name="alergicos" value="false" class="cr" data-target="alergicos_desc" aria-label="Alérgicos: No"></td>
+            <td><textarea name="alergicos_descripcion" id="alergicos_desc" rows="2" class="tbl-ta" disabled></textarea></td>
+          </tr>
+          <tr>
+            <th scope="row">Enfermedades actuales</th>
+            <td class="rc"><input type="radio" name="enfermedades_actuales" value="true"  class="cr" data-target="enfermedades_desc" aria-label="Enfermedades actuales: Sí"></td>
+            <td class="rc"><input type="radio" name="enfermedades_actuales" value="false" class="cr" data-target="enfermedades_desc" aria-label="Enfermedades actuales: No"></td>
+            <td><textarea name="enfermedades_actuales_descripcion" id="enfermedades_desc" rows="2" class="tbl-ta" disabled></textarea></td>
+          </tr>
+          <tr>
+            <th scope="row">Traumatismos</th>
+            <td class="rc"><input type="radio" name="traumatismos" value="true"  class="cr" data-target="traumatismos_desc" aria-label="Traumatismos: Sí"></td>
+            <td class="rc"><input type="radio" name="traumatismos" value="false" class="cr" data-target="traumatismos_desc" aria-label="Traumatismos: No"></td>
+            <td><textarea name="traumatismos_descripcion" id="traumatismos_desc" rows="2" class="tbl-ta" disabled></textarea></td>
+          </tr>
+          <tr>
+            <th scope="row">Convulsiones</th>
+            <td class="rc"><input type="radio" name="convulsiones" value="true"  class="cr" data-target="convulsiones_desc" aria-label="Convulsiones: Sí"></td>
+            <td class="rc"><input type="radio" name="convulsiones" value="false" class="cr" data-target="convulsiones_desc" aria-label="Convulsiones: No"></td>
+            <td><textarea name="convulsiones_descripcion" id="convulsiones_desc" rows="2" class="tbl-ta" disabled></textarea></td>
+          </tr>
+          <tr>
+            <th scope="row">Transfusiones sanguíneas</th>
+            <td class="rc"><input type="radio" name="transfusiones" value="true"  class="cr" data-target="transfusiones_desc" aria-label="Transfusiones: Sí"></td>
+            <td class="rc"><input type="radio" name="transfusiones" value="false" class="cr" data-target="transfusiones_desc" aria-label="Transfusiones: No"></td>
+            <td><textarea name="transfusiones_descripcion" id="transfusiones_desc" rows="2" class="tbl-ta" disabled></textarea></td>
+          </tr>
+          <tr>
+            <th scope="row">Consumo de sustancias <small>(incluidos tabaco y alcohol)</small></th>
+            <td class="rc"><input type="radio" name="sustancias" value="true"  class="cr" data-target="sustancias_desc" aria-label="Consumo de sustancias: Sí"></td>
+            <td class="rc"><input type="radio" name="sustancias" value="false" class="cr" data-target="sustancias_desc" aria-label="Consumo de sustancias: No"></td>
+            <td><textarea name="sustancias_descripcion" id="sustancias_desc" rows="2" class="tbl-ta" disabled></textarea></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Medicamentos y Salud Mental -->
+      <div class="inline-qs">
+
+        <div class="iq">
+          <div class="iq-row">
+            <span class="iq-label">¿Se encuentra tomando algún medicamento?</span>
+            <div class="iq-radios">
+              <label><input type="radio" name="toma_medicamento" value="true"> Sí</label>
+              <label><input type="radio" name="toma_medicamento" value="false"> No</label>
+            </div>
+          </div>
+          <div class="iq-extra" id="medicamentos_wrap">
+            <label for="medicamentos_dosis">¿Cuáles? <small>(especificar dosis)</small></label>
+            <textarea id="medicamentos_dosis" name="medicamentos_dosis" rows="3"></textarea>
+          </div>
+        </div>
+
+        <div class="iq">
+          <div class="iq-row">
+            <span class="iq-label">¿Ha recibido tratamientos previos de Salud Mental?</span>
+            <div class="iq-radios">
+              <label><input type="radio" name="tratamientos_salud_mental" value="true"> Sí</label>
+              <label><input type="radio" name="tratamientos_salud_mental" value="false"> No</label>
+            </div>
+          </div>
+          <div class="iq-extra" id="tratamientos_wrap">
+            <label for="tratamientos_especificar">Especificar</label>
+            <textarea id="tratamientos_especificar" name="tratamientos_salud_mental_especificar" rows="3"></textarea>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ FIRMA ══ -->
+    <section class="form-section firma-section">
+      <div class="firma-wrap">
+        <div class="firma-block">
+          <input type="text" name="firma_paciente_tutor" class="firma-input" placeholder="Nombre completo legible" aria-label="Nombre del firmante">
+          <div class="firma-line"></div>
+          <p class="firma-caption">Nombre y firma del paciente o tutor (en caso de ser menor de edad)</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="form-actions">
+      <button type="reset"   class="btn btn-reset">Limpiar</button>
+      <button type="button"  class="btn btn-print" onclick="window.print()">Imprimir</button>
+      <button type="submit"  class="btn btn-submit">Guardar</button>
+    </div>
+
+  </form>
+
+  <footer class="doc-footer">
+    <p>Chosica 730, Lindavista, Ciudad de México</p>
+    <p>comunicación@clinicadelaansiedad.mx &nbsp;·&nbsp; www.clinicadelaansiedad.mx</p>
+    <p>Fijo: 21218193 &nbsp;/&nbsp; Móvil: 5611708117</p>
+  </footer>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>
