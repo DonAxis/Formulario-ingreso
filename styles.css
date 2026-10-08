@@ -599,6 +599,51 @@ input[type="number"] { -moz-appearance: textfield; }
 }
 
 /* ============================================================
+   TOAST
+   ============================================================ */
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(calc(100% + 2rem));
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  background: #1E1E2E;
+  color: #fff;
+  padding: .85rem 1.5rem;
+  border-radius: 999px;
+  box-shadow: 0 8px 30px rgba(0,0,0,.25);
+  font-size: .95rem;
+  font-weight: 500;
+  white-space: nowrap;
+  max-width: calc(100vw - 2rem);
+  pointer-events: none;
+  transition: transform .35s cubic-bezier(.34,1.56,.64,1), opacity .35s ease;
+  opacity: 0;
+  z-index: 9999;
+}
+
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.toast-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--clr-green);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .85rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* ============================================================
    PRINT
    ============================================================ */
 @media print {
