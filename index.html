@@ -12,21 +12,7 @@
   <!-- ══ ENCABEZADO DEL DOCUMENTO ══ -->
   <header class="doc-header">
     <div class="logo-wrap">
-      <svg class="logo-icon" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <circle cx="36" cy="36" r="33" stroke="#B5291E" stroke-width="2.5" fill="none"/>
-        <ellipse cx="36" cy="36" rx="18" ry="16" fill="#FDECEB" stroke="#B5291E" stroke-width="1.8"/>
-        <path d="M26 30 C26 24 31 21 36 23 C41 21 46 24 46 30" stroke="#B5291E" stroke-width="1.6" fill="none" stroke-linecap="round"/>
-        <path d="M22 36 C24 32 29 31 33 33 C35 34 37 34 39 33 C43 31 48 32 50 36" stroke="#B5291E" stroke-width="1.6" fill="none" stroke-linecap="round"/>
-        <path d="M26 42 C28 47 32 49 36 48" stroke="#B5291E" stroke-width="1.6" fill="none" stroke-linecap="round"/>
-        <path d="M46 42 C44 47 40 49 36 48" stroke="#B5291E" stroke-width="1.6" fill="none" stroke-linecap="round"/>
-        <circle cx="36" cy="36" r="2.5" fill="#B5291E"/>
-      </svg>
-      <div class="clinic-name-stack">
-        <span class="cn-main">clínica</span>
-        <span class="cn-sub">de la ansiedad</span>
-        <span class="cn-sub">y salud mental</span>
-        <span class="cn-cofepris">Registro Cofepris 183300536X3541</span>
-      </div>
+      <img class="logo-img" src="usos/logo clinica.png" alt="Clínica de la Ansiedad y Salud Mental">
     </div>
 
     <div class="form-meta">
@@ -65,8 +51,8 @@
       <div class="form-grid">
 
         <div class="fg col-3">
-          <label for="nombre_paciente">Nombre del paciente <span class="req">*</span></label>
-          <input type="text" id="nombre_paciente" name="nombre_paciente" required>
+          <label for="nombre_paciente">(aqui estaria repitiendo el dato, no supe si dejar o como acomodar) = Nombre del paciente</label>
+          <input type="text" id="nombre_paciente" name="nombre_paciente">
         </div>
         <div class="fg col-1">
           <label for="nombre_tutor">Nombre del tutor <small>(menores de edad)</small></label>
@@ -338,21 +324,9 @@
       </div>
     </section>
 
-    <!-- ══ FIRMA ══ -->
-    <section class="form-section firma-section">
-      <div class="firma-wrap">
-        <div class="firma-block">
-          <input type="text" name="firma_paciente_tutor" class="firma-input" placeholder="Nombre completo legible" aria-label="Nombre del firmante">
-          <div class="firma-line"></div>
-          <p class="firma-caption">Nombre y firma del paciente o tutor (en caso de ser menor de edad)</p>
-        </div>
-      </div>
-    </section>
-
     <div class="form-actions">
-      <button type="reset"   class="btn btn-reset">Limpiar</button>
-      <button type="button"  class="btn btn-print" onclick="window.print()">Imprimir</button>
-      <button type="submit"  class="btn btn-submit">Guardar</button>
+      <button type="reset"  class="btn btn-reset">Limpiar</button>
+      <button type="submit" class="btn btn-submit">Guardar</button>
     </div>
 
   </form>

@@ -70,44 +70,17 @@ body { padding: var(--sp-lg) var(--sp); }
 
 .logo-wrap {
   display: flex;
-  align-items: center;
-  gap: var(--sp);
-  flex-shrink: 0;
-}
-
-.logo-icon {
-  width: 62px;
-  height: 62px;
-  flex-shrink: 0;
-}
-
-.clinic-name-stack {
-  display: flex;
   flex-direction: column;
-  line-height: 1.25;
+  align-items: flex-start;
+  flex-shrink: 0;
 }
 
-.cn-main {
-  font-size: 1.2rem;
-  font-weight: 800;
-  color: var(--clr-primary);
-  letter-spacing: -.01em;
+.logo-img {
+  width: 170px;
+  height: auto;
+  display: block;
 }
 
-.cn-sub {
-  font-size: .78rem;
-  color: var(--clr-primary);
-  font-weight: 400;
-}
-
-.cn-cofepris {
-  font-size: .6rem;
-  color: var(--clr-accent);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: .04em;
-  margin-top: .3rem;
-}
 
 /* Meta (title + header fields) */
 .form-meta { flex: 1; }
@@ -210,7 +183,6 @@ label {
   font-weight: 600;
   color: var(--clr-muted);
   display: block;
-  user-select: none;
 }
 
 label small {
@@ -434,51 +406,6 @@ input[type="number"]::-webkit-outer-spin-button { display: none; }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ============================================================
-   FIRMA
-   ============================================================ */
-.firma-section { border-bottom: none; }
-
-.firma-wrap {
-  display: flex;
-  justify-content: center;
-  padding: var(--sp-xl) var(--sp-lg) var(--sp-lg);
-}
-
-.firma-block {
-  width: 55%;
-  text-align: center;
-}
-
-.firma-input {
-  border: none !important;
-  border-bottom: 1.5px solid var(--clr-text) !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  text-align: center;
-  font-size: 1rem;
-  font-style: italic;
-  color: var(--clr-text);
-  padding: .3rem 0 !important;
-  margin-bottom: .4rem;
-}
-
-.firma-input:focus {
-  box-shadow: none !important;
-  border-bottom-color: var(--clr-primary) !important;
-}
-
-.firma-line {
-  width: 100%;
-  height: 1px;
-  background: var(--clr-text);
-  margin: .5rem 0 .35rem;
-}
-
-.firma-caption {
-  font-size: .78rem;
-  color: var(--clr-muted);
-}
 
 /* ============================================================
    FORM ACTIONS
