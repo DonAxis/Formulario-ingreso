@@ -1,5 +1,8 @@
 'use strict';
 
+// ── Bloquear inputs de familia al cargar
+document.querySelectorAll('.hf-body input').forEach(inp => { inp.disabled = true; });
+
 // ── Fecha de hoy en encabezado
 const fechaHeader = document.querySelector('[name="encabezado_fecha"]');
 if (fechaHeader && !fechaHeader.value) {
@@ -51,26 +54,54 @@ document.querySelectorAll('[data-goto]').forEach(btn => {
 });
 
 // ══════════════════════════════════════════
-// TOGGLE Sí / No — estado visual
+// HEREDOFAMILIARES — inyectar etiqueta "¿Vive?"
+// ══════════════════════════════════════════
+document.querySelectorAll('.hf-card .yn-toggle').forEach(toggle => {
+  const wrap = document.createElement('div');
+  wrap.className = 'hf-toggle-wrap';
+  const q = document.createElement('span');
+  q.className = 'hf-q';
+  q.textContent = '¿Vive?';
+  toggle.parentNode.insertBefore(wrap, toggle);
+  wrap.appendChild(q);
+  wrap.appendChild(toggle);
+});
+
+// ══════════════════════════════════════════
+// TOGGLE Sí / No — estado visual + label dinámico
 // ══════════════════════════════════════════
 document.querySelectorAll('.yn-toggle input[type="radio"]').forEach(radio => {
   radio.addEventListener('change', function () {
     const toggle = this.closest('.yn-toggle');
     toggle.querySelectorAll('.yn-btn').forEach(b => b.classList.remove('selected'));
     this.nextElementSibling.classList.add('selected');
+
+    // Activar input y mostrar label en tarjetas de familia
+    const card = this.closest('.hf-card');
+    if (card) {
+      const label = card.querySelector('.hf-desc-label');
+      const input = card.querySelector('.hf-body input');
+      if (label) label.textContent = this.value === 'true' ? 'Enfermedades actuales' : 'Causa de defunción';
+      if (input) { input.disabled = false; input.focus(); }
+    }
   });
 });
 
 // ══════════════════════════════════════════
 // CAMPOS CONDICIONALES — Sección 3
-// Muestra la descripción solo cuando se selecciona Sí
+// Textarea siempre visible: activa con Sí, bloqueada con No
 // ══════════════════════════════════════════
+
+// Bloquear todos por defecto al cargar
+document.querySelectorAll('.ap-body textarea').forEach(ta => { ta.disabled = true; });
+
 document.querySelectorAll('.cond-t').forEach(radio => {
   radio.addEventListener('change', function () {
     const body = document.getElementById(this.dataset.body);
     if (!body) return;
-    body.classList.add('open');
-    body.querySelector('input, textarea')?.focus();
+    body.classList.add('active');
+    const ta = body.querySelector('textarea');
+    if (ta) { ta.disabled = false; ta.focus(); }
   });
 });
 
@@ -78,8 +109,8 @@ document.querySelectorAll('.cond-f').forEach(radio => {
   radio.addEventListener('change', function () {
     const body = document.getElementById(this.dataset.body);
     if (!body) return;
-    body.classList.remove('open');
-    body.querySelectorAll('input, textarea').forEach(el => { el.value = ''; });
+    body.classList.remove('active');
+    body.querySelectorAll('textarea').forEach(ta => { ta.disabled = true; ta.value = ''; });
   });
 });
 

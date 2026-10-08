@@ -77,8 +77,8 @@
           </div>
 
           <div class="fg col-1">
-            <label for="sexo">Sexo <span class="req">*</span></label>
-            <select id="sexo" name="sexo" required>
+            <label for="sexo">Sexo</label>
+            <select id="sexo" name="sexo">
               <option value="">— Seleccionar —</option>
               <option>Masculino</option>
               <option>Femenino</option>
@@ -86,12 +86,12 @@
             </select>
           </div>
           <div class="fg col-1">
-            <label for="edad">Edad <span class="req">*</span></label>
-            <input type="number" id="edad" name="edad" min="0" max="120" required>
+            <label for="edad">Edad</label>
+            <input type="number" id="edad" name="edad" min="0" max="120">
           </div>
           <div class="fg col-1">
-            <label for="fecha_nacimiento">Fecha de nacimiento <span class="req">*</span></label>
-            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
+            <label for="fecha_nacimiento">Fecha de nacimiento</label>
+            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento">
           </div>
           <div class="fg col-1">
             <label for="lugar_nacimiento">Lugar de nacimiento</label>
@@ -99,8 +99,8 @@
           </div>
 
           <div class="fg col-1">
-            <label for="estado_civil">Estado civil <span class="req">*</span></label>
-            <select id="estado_civil" name="estado_civil" required>
+            <label for="estado_civil">Estado civil</label>
+            <select id="estado_civil" name="estado_civil">
               <option value="">— Seleccionar —</option>
               <option>Soltero/a</option>
               <option>Casado/a</option>
@@ -115,8 +115,8 @@
             <input type="text" id="religion" name="religion">
           </div>
           <div class="fg col-1">
-            <label for="escolaridad">Escolaridad <span class="req">*</span></label>
-            <select id="escolaridad" name="escolaridad" required>
+            <label for="escolaridad">Escolaridad</label>
+            <select id="escolaridad" name="escolaridad">
               <option value="">— Seleccionar —</option>
               <option>Sin escolaridad</option>
               <option>Primaria</option>
@@ -128,31 +128,31 @@
             </select>
           </div>
           <div class="fg col-1">
-            <label for="ocupacion">Ocupación <span class="req">*</span></label>
-            <input type="text" id="ocupacion" name="ocupacion" required>
+            <label for="ocupacion">Ocupación</label>
+            <input type="text" id="ocupacion" name="ocupacion">
           </div>
 
           <div class="fg col-4">
-            <label for="domicilio">Domicilio <span class="req">*</span></label>
-            <input type="text" id="domicilio" name="domicilio" placeholder="Calle, número, colonia, C.P., Ciudad" required>
+            <label for="domicilio">Domicilio</label>
+            <input type="text" id="domicilio" name="domicilio" placeholder="Calle, número, colonia, C.P., Ciudad">
           </div>
 
           <div class="fg col-1">
-            <label for="tel_movil">Teléfono móvil <span class="req">*</span></label>
-            <input type="tel" id="tel_movil" name="telefono_movil" pattern="[0-9]{10}" maxlength="10" placeholder="10 dígitos" required>
+            <label for="tel_movil">Teléfono móvil</label>
+            <input type="tel" id="tel_movil" name="telefono_movil" pattern="[0-9]{10}" maxlength="10" placeholder="10 dígitos">
           </div>
           <div class="fg col-1">
             <label for="tel_fijo">Teléfono fijo</label>
             <input type="tel" id="tel_fijo" name="telefono_fijo" pattern="[0-9]{10}" maxlength="10" placeholder="10 dígitos">
           </div>
           <div class="fg col-2">
-            <label for="email">Email <span class="req">*</span></label>
-            <input type="email" id="email" name="email" required>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email">
           </div>
 
           <div class="fg col-4">
-            <label for="motivo_consulta">Motivo de consulta <span class="req">*</span></label>
-            <textarea id="motivo_consulta" name="motivo_consulta" rows="3" required></textarea>
+            <label for="motivo_consulta">Motivo de consulta</label>
+            <textarea id="motivo_consulta" name="motivo_consulta" rows="3"></textarea>
           </div>
 
           <div class="fg col-2">
@@ -197,7 +197,7 @@
               </div>
             </div>
             <div class="hf-body">
-              <label>Enfermedades actuales y/o causa de defunción</label>
+              <label class="hf-desc-label"></label>
               <input type="text" name="madre_descripcion">
             </div>
           </div>
@@ -211,7 +211,7 @@
               </div>
             </div>
             <div class="hf-body">
-              <label>Enfermedades actuales y/o causa de defunción</label>
+              <label class="hf-desc-label"></label>
               <input type="text" name="padre_descripcion">
             </div>
           </div>
@@ -225,7 +225,7 @@
               </div>
             </div>
             <div class="hf-body">
-              <label>Enfermedades actuales y/o causa de defunción</label>
+              <label class="hf-desc-label"></label>
               <input type="text" name="hermanos_descripcion">
             </div>
           </div>
@@ -239,7 +239,7 @@
               </div>
             </div>
             <div class="hf-body">
-              <label>Enfermedades actuales y/o causa de defunción</label>
+              <label class="hf-desc-label"></label>
               <input type="text" name="abuelo_paterno_descripcion">
             </div>
           </div>
@@ -253,7 +253,7 @@
               </div>
             </div>
             <div class="hf-body">
-              <label>Enfermedades actuales y/o causa de defunción</label>
+              <label class="hf-desc-label"></label>
               <input type="text" name="abuela_paterna_descripcion">
             </div>
           </div>
@@ -267,7 +267,7 @@
               </div>
             </div>
             <div class="hf-body">
-              <label>Enfermedades actuales y/o causa de defunción</label>
+              <label class="hf-desc-label"></label>
               <input type="text" name="abuelo_materno_descripcion">
             </div>
           </div>
@@ -281,7 +281,7 @@
               </div>
             </div>
             <div class="hf-body">
-              <label>Enfermedades actuales y/o causa de defunción</label>
+              <label class="hf-desc-label"></label>
               <input type="text" name="abuela_materna_descripcion">
             </div>
           </div>
