@@ -22,7 +22,12 @@ function goStep(n) {
   // Marcar paso anterior como completado si avanzamos
   if (n > currentStep) {
     prevBtn?.classList.add('done');
-    if (prevLine?.classList.contains('step-line')) prevLine.classList.add('done');
+    if (prevLine?.classList.contains('step-line')) {
+    prevLine.classList.add('done');
+    prevLine.dataset.fromStep = currentStep;
+    const stepColors = { 1: '#16698A', 2: '#2E7D52', 3: '#6B4E9E' };
+    prevLine.style.background = stepColors[currentStep] || '';
+  }
   } else {
     // Quitar done si retrocedemos
     for (let i = n; i <= 3; i++) {

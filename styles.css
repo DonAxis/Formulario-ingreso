@@ -511,6 +511,60 @@ input[type="number"] { -moz-appearance: textfield; }
 }
 
 /* ============================================================
+   COLOR POR PASO
+   ============================================================ */
+
+/* Variables */
+:root {
+  --clr-s2:    #2E7D52;
+  --clr-s2-lt: #E6F5EE;
+  --clr-s2-dk: #1A4D32;
+
+  --clr-s3:    #6B4E9E;
+  --clr-s3-lt: #F0EBF8;
+  --clr-s3-dk: #3D2A5F;
+}
+
+/* ── Stepper: círculo activo por paso ── */
+.step-btn[data-step="1"].active .step-num,
+.step-btn[data-step="1"].done  .step-num { background: var(--clr-primary); }
+.step-btn[data-step="1"].active .step-txt { color: var(--clr-primary); }
+.step-btn[data-step="1"].done  .step-txt { color: var(--clr-primary); }
+
+.step-btn[data-step="2"].active .step-num,
+.step-btn[data-step="2"].done  .step-num { background: var(--clr-s2); }
+.step-btn[data-step="2"].active .step-txt { color: var(--clr-s2); }
+.step-btn[data-step="2"].done  .step-txt { color: var(--clr-s2); }
+
+.step-btn[data-step="3"].active .step-num,
+.step-btn[data-step="3"].done  .step-num { background: var(--clr-s3); }
+.step-btn[data-step="3"].active .step-txt { color: var(--clr-s3); }
+.step-btn[data-step="3"].done  .step-txt { color: var(--clr-s3); }
+
+/* ── Paso 2: verde ── */
+#panel-2 .section-title {
+  border-top-color: var(--clr-s2);
+  background: var(--clr-s2-lt);
+  color: var(--clr-s2-dk);
+}
+#panel-2 .hf-card  { border-color: #A8D5C0; }
+#panel-2 .hf-body  { background: #F0FAF5; border-top-color: #C5E8D8; }
+#panel-2 .btn-next { background: var(--clr-s2); border-color: var(--clr-s2-dk); }
+#panel-2 .btn-next:hover { background: var(--clr-s2-dk); }
+
+/* ── Paso 3: púrpura ── */
+#panel-3 .section-title {
+  border-top-color: var(--clr-s3);
+  background: var(--clr-s3-lt);
+  color: var(--clr-s3-dk);
+}
+#panel-3 .ap-card         { border-color: #C9B8E0; }
+#panel-3 .ap-body.active  { background: var(--clr-s3-lt); border-top-color: var(--clr-s3); }
+#panel-3 .ap-body.active label { color: var(--clr-s3-dk); }
+#panel-3 .btn-submit { background: var(--clr-s3); border-color: var(--clr-s3-dk); }
+#panel-3 .btn-submit:hover { background: var(--clr-s3-dk); }
+
+/* ============================================================
    RESPONSIVE — tablet 768px
    ============================================================ */
 @media (max-width: 768px) {
