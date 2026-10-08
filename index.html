@@ -3,18 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Formulario de registro | Clínica de la Ansiedad y Salud Mental</title>
+  <title>FC2 – Historia Clínica | Clínica de la Ansiedad y Salud Mental</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <div class="page">
 
-  <!-- ══ ENCABEZADO DEL DOCUMENTO ══ -->
+  <!-- ══ ENCABEZADO ══ -->
   <header class="doc-header">
     <div class="logo-wrap">
       <img class="logo-img" src="usos/logo clinica.png" alt="Clínica de la Ansiedad y Salud Mental">
     </div>
-
     <div class="form-meta">
       <h1 class="form-title">FC2 – Historia Clínica</h1>
       <div class="meta-fields">
@@ -37,296 +36,421 @@
   </header>
 
   <p class="instruction">
-    Favor de llenar los rubros que a continuación se presentan. En caso de dificultades con el llenado del
-    formato acercarse con el personal de Clínica para orientación.
+    Llena correctamente lo que a continuación se te indica, ante cualquier duda, consulte a personal.
   </p>
+
+  <!-- ══ INDICADOR DE PASOS ══ -->
+  <div class="stepper">
+    <button type="button" class="step-btn active" data-step="1">
+      <span class="step-num">1</span>
+      <span class="step-txt">Identificación</span>
+    </button>
+    <div class="step-line"></div>
+    <button type="button" class="step-btn" data-step="2">
+      <span class="step-num">2</span>
+      <span class="step-txt">Antec. Familiares</span>
+    </button>
+    <div class="step-line"></div>
+    <button type="button" class="step-btn" data-step="3">
+      <span class="step-num">3</span>
+      <span class="step-txt">Antec. Patológicos</span>
+    </button>
+  </div>
 
   <form id="fc2" novalidate>
 
-    <!-- ══════════════════════════════════════════
-         1. FICHA DE IDENTIFICACIÓN
-         ══════════════════════════════════════════ -->
-    <section class="form-section">
-      <h2 class="section-title">1. Ficha de Identificación</h2>
-      <div class="form-grid">
+    <!-- ══════════════════════════════════
+         PASO 1 · FICHA DE IDENTIFICACIÓN
+         ══════════════════════════════════ -->
+    <div class="step-panel active" id="panel-1">
+      <section class="form-section">
+        <h2 class="section-title">1. Ficha de Identificación</h2>
+        <div class="form-grid">
 
-        <div class="fg col-3">
-          <label for="nombre_paciente">(aqui estaria repitiendo el dato, no supe si dejar o como acomodar) = Nombre del paciente</label>
-          <input type="text" id="nombre_paciente" name="nombre_paciente">
-        </div>
-        <div class="fg col-1">
-          <label for="nombre_tutor">Nombre del tutor <small>(menores de edad)</small></label>
-          <input type="text" id="nombre_tutor" name="nombre_tutor">
-        </div>
+          <div class="fg col-3">
+            <label for="nombre_paciente">(aqui estaria repitiendo el dato, no supe si dejar o como acomodar) = Nombre del paciente</label>
+            <input type="text" id="nombre_paciente" name="nombre_paciente">
+          </div>
+          <div class="fg col-1">
+            <label for="nombre_tutor">Nombre del tutor <small>(menores de edad)</small></label>
+            <input type="text" id="nombre_tutor" name="nombre_tutor">
+          </div>
 
-        <div class="fg col-1">
-          <label for="sexo">Sexo <span class="req">*</span></label>
-          <select id="sexo" name="sexo" required>
-            <option value="">— Seleccionar —</option>
-            <option>Masculino</option>
-            <option>Femenino</option>
-            <option>Otro</option>
-          </select>
-        </div>
-        <div class="fg col-1">
-          <label for="edad">Edad <span class="req">*</span></label>
-          <input type="number" id="edad" name="edad" min="0" max="120" required>
-        </div>
-        <div class="fg col-1">
-          <label for="fecha_nacimiento">Fecha de nacimiento <span class="req">*</span></label>
-          <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
-        </div>
-        <div class="fg col-1">
-          <label for="lugar_nacimiento">Lugar de nacimiento</label>
-          <input type="text" id="lugar_nacimiento" name="lugar_nacimiento" placeholder="Ciudad, Estado, País">
-        </div>
+          <div class="fg col-1">
+            <label for="sexo">Sexo <span class="req">*</span></label>
+            <select id="sexo" name="sexo" required>
+              <option value="">— Seleccionar —</option>
+              <option>Masculino</option>
+              <option>Femenino</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div class="fg col-1">
+            <label for="edad">Edad <span class="req">*</span></label>
+            <input type="number" id="edad" name="edad" min="0" max="120" required>
+          </div>
+          <div class="fg col-1">
+            <label for="fecha_nacimiento">Fecha de nacimiento <span class="req">*</span></label>
+            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
+          </div>
+          <div class="fg col-1">
+            <label for="lugar_nacimiento">Lugar de nacimiento</label>
+            <input type="text" id="lugar_nacimiento" name="lugar_nacimiento" placeholder="Ciudad, Estado, País">
+          </div>
 
-        <div class="fg col-1">
-          <label for="estado_civil">Estado civil <span class="req">*</span></label>
-          <select id="estado_civil" name="estado_civil" required>
-            <option value="">— Seleccionar —</option>
-            <option>Soltero/a</option>
-            <option>Casado/a</option>
-            <option>Divorciado/a</option>
-            <option>Viudo/a</option>
-            <option>Unión libre</option>
-            <option>Otro</option>
-          </select>
-        </div>
-        <div class="fg col-1">
-          <label for="religion">Religión</label>
-          <input type="text" id="religion" name="religion">
-        </div>
-        <div class="fg col-1">
-          <label for="escolaridad">Escolaridad <span class="req">*</span></label>
-          <select id="escolaridad" name="escolaridad" required>
-            <option value="">— Seleccionar —</option>
-            <option>Sin escolaridad</option>
-            <option>Primaria</option>
-            <option>Secundaria</option>
-            <option>Preparatoria</option>
-            <option>Licenciatura</option>
-            <option>Posgrado</option>
-            <option>Otro</option>
-          </select>
-        </div>
-        <div class="fg col-1">
-          <label for="ocupacion">Ocupación <span class="req">*</span></label>
-          <input type="text" id="ocupacion" name="ocupacion" required>
-        </div>
+          <div class="fg col-1">
+            <label for="estado_civil">Estado civil <span class="req">*</span></label>
+            <select id="estado_civil" name="estado_civil" required>
+              <option value="">— Seleccionar —</option>
+              <option>Soltero/a</option>
+              <option>Casado/a</option>
+              <option>Divorciado/a</option>
+              <option>Viudo/a</option>
+              <option>Unión libre</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div class="fg col-1">
+            <label for="religion">Religión</label>
+            <input type="text" id="religion" name="religion">
+          </div>
+          <div class="fg col-1">
+            <label for="escolaridad">Escolaridad <span class="req">*</span></label>
+            <select id="escolaridad" name="escolaridad" required>
+              <option value="">— Seleccionar —</option>
+              <option>Sin escolaridad</option>
+              <option>Primaria</option>
+              <option>Secundaria</option>
+              <option>Preparatoria</option>
+              <option>Licenciatura</option>
+              <option>Posgrado</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div class="fg col-1">
+            <label for="ocupacion">Ocupación <span class="req">*</span></label>
+            <input type="text" id="ocupacion" name="ocupacion" required>
+          </div>
 
-        <div class="fg col-4">
-          <label for="domicilio">Domicilio <span class="req">*</span></label>
-          <input type="text" id="domicilio" name="domicilio" placeholder="Calle, número, colonia, C.P., Ciudad" required>
-        </div>
+          <div class="fg col-4">
+            <label for="domicilio">Domicilio <span class="req">*</span></label>
+            <input type="text" id="domicilio" name="domicilio" placeholder="Calle, número, colonia, C.P., Ciudad" required>
+          </div>
 
-        <div class="fg col-1">
-          <label for="tel_movil">Teléfono móvil <span class="req">*</span></label>
-          <input type="tel" id="tel_movil" name="telefono_movil" pattern="[0-9]{10}" maxlength="10" placeholder="10 dígitos" required>
-        </div>
-        <div class="fg col-1">
-          <label for="tel_fijo">Teléfono fijo</label>
-          <input type="tel" id="tel_fijo" name="telefono_fijo" pattern="[0-9]{10}" maxlength="10" placeholder="10 dígitos">
-        </div>
-        <div class="fg col-2">
-          <label for="email">Email <span class="req">*</span></label>
-          <input type="email" id="email" name="email" required>
-        </div>
+          <div class="fg col-1">
+            <label for="tel_movil">Teléfono móvil <span class="req">*</span></label>
+            <input type="tel" id="tel_movil" name="telefono_movil" pattern="[0-9]{10}" maxlength="10" placeholder="10 dígitos" required>
+          </div>
+          <div class="fg col-1">
+            <label for="tel_fijo">Teléfono fijo</label>
+            <input type="tel" id="tel_fijo" name="telefono_fijo" pattern="[0-9]{10}" maxlength="10" placeholder="10 dígitos">
+          </div>
+          <div class="fg col-2">
+            <label for="email">Email <span class="req">*</span></label>
+            <input type="email" id="email" name="email" required>
+          </div>
 
-        <div class="fg col-4">
-          <label for="motivo_consulta">Motivo de consulta <span class="req">*</span></label>
-          <textarea id="motivo_consulta" name="motivo_consulta" rows="3" required></textarea>
-        </div>
+          <div class="fg col-4">
+            <label for="motivo_consulta">Motivo de consulta <span class="req">*</span></label>
+            <textarea id="motivo_consulta" name="motivo_consulta" rows="3" required></textarea>
+          </div>
 
-        <div class="fg col-2">
-          <label for="medio_enterado">Medio por el cual se enteró de la clínica</label>
-          <select id="medio_enterado" name="medio_enterado_clinica">
-            <option value="">— Seleccionar —</option>
-            <option>Redes sociales</option>
-            <option>Recomendación</option>
-            <option>Búsqueda web</option>
-            <option>Publicidad</option>
-            <option>Otro</option>
-          </select>
-        </div>
+          <div class="fg col-2">
+            <label for="medio_enterado">Medio por el cual se enteró de la clínica</label>
+            <select id="medio_enterado" name="medio_enterado_clinica">
+              <option value="">— Seleccionar —</option>
+              <option>Redes sociales</option>
+              <option>Recomendación</option>
+              <option>Luis me invitó a ver un experimento</option>
+              <option>Venía pasando</option>
+              <option>No lo conozco</option>
+            </select>
+          </div>
 
-        <div class="fg col-4">
-          <label for="mejora_vida">¿De qué manera la clínica puede mejorar su vida?</label>
-          <textarea id="mejora_vida" name="mejora_vida_esperada" rows="3"></textarea>
-        </div>
+          <div class="fg col-4">
+            <label for="mejora_vida">¿De qué manera la clínica puede mejorar su vida?</label>
+            <textarea id="mejora_vida" name="mejora_vida_esperada" rows="3"></textarea>
+          </div>
 
+        </div>
+      </section>
+      <div class="step-nav">
+        <span></span>
+        <button type="button" class="btn btn-next" data-goto="2">Siguiente →</button>
       </div>
-    </section>
+    </div>
 
-    <!-- ══════════════════════════════════════════
-         2. ANTECEDENTES HEREDOFAMILIARES
-         ══════════════════════════════════════════ -->
-    <section class="form-section">
-      <h2 class="section-title">2. Antecedentes Heredofamiliares</h2>
+    <!-- ══════════════════════════════════
+         PASO 2 · ANTECEDENTES HEREDOFAMILIARES
+         ══════════════════════════════════ -->
+    <div class="step-panel" id="panel-2">
+      <section class="form-section">
+        <h2 class="section-title">2. Antecedentes Heredofamiliares</h2>
+        <div class="card-grid">
 
-      <table class="med-table">
-        <thead>
-          <tr>
-            <th rowspan="2" class="col-label"></th>
-            <th colspan="2" class="col-vive-grp">¿Vive?</th>
-            <th rowspan="2" class="col-desc">Enfermedades actuales y/o causa de defunción</th>
-          </tr>
-          <tr>
-            <th class="col-yn">Sí</th>
-            <th class="col-yn">No</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">Madre</th>
-            <td class="rc"><input type="radio" name="madre_vive" value="true"  aria-label="Madre vive: Sí"></td>
-            <td class="rc"><input type="radio" name="madre_vive" value="false" aria-label="Madre vive: No"></td>
-            <td><input type="text" name="madre_descripcion" class="tbl-input"></td>
-          </tr>
-          <tr>
-            <th scope="row">Padre</th>
-            <td class="rc"><input type="radio" name="padre_vive" value="true"  aria-label="Padre vive: Sí"></td>
-            <td class="rc"><input type="radio" name="padre_vive" value="false" aria-label="Padre vive: No"></td>
-            <td><input type="text" name="padre_descripcion" class="tbl-input"></td>
-          </tr>
-          <tr>
-            <th scope="row">Hermanos</th>
-            <td class="rc"><input type="radio" name="hermanos_vive" value="true"  aria-label="Hermanos viven: Sí"></td>
-            <td class="rc"><input type="radio" name="hermanos_vive" value="false" aria-label="Hermanos viven: No"></td>
-            <td><input type="text" name="hermanos_descripcion" class="tbl-input"></td>
-          </tr>
-          <tr>
-            <th scope="row">Abuelo Paterno</th>
-            <td class="rc"><input type="radio" name="abuelo_paterno_vive" value="true"  aria-label="Abuelo Paterno vive: Sí"></td>
-            <td class="rc"><input type="radio" name="abuelo_paterno_vive" value="false" aria-label="Abuelo Paterno vive: No"></td>
-            <td><input type="text" name="abuelo_paterno_descripcion" class="tbl-input"></td>
-          </tr>
-          <tr>
-            <th scope="row">Abuela Paterna</th>
-            <td class="rc"><input type="radio" name="abuela_paterna_vive" value="true"  aria-label="Abuela Paterna vive: Sí"></td>
-            <td class="rc"><input type="radio" name="abuela_paterna_vive" value="false" aria-label="Abuela Paterna vive: No"></td>
-            <td><input type="text" name="abuela_paterna_descripcion" class="tbl-input"></td>
-          </tr>
-          <tr>
-            <th scope="row">Abuelo Materno</th>
-            <td class="rc"><input type="radio" name="abuelo_materno_vive" value="true"  aria-label="Abuelo Materno vive: Sí"></td>
-            <td class="rc"><input type="radio" name="abuelo_materno_vive" value="false" aria-label="Abuelo Materno vive: No"></td>
-            <td><input type="text" name="abuelo_materno_descripcion" class="tbl-input"></td>
-          </tr>
-          <tr>
-            <th scope="row">Abuela Materna</th>
-            <td class="rc"><input type="radio" name="abuela_materna_vive" value="true"  aria-label="Abuela Materna vive: Sí"></td>
-            <td class="rc"><input type="radio" name="abuela_materna_vive" value="false" aria-label="Abuela Materna vive: No"></td>
-            <td><input type="text" name="abuela_materna_descripcion" class="tbl-input"></td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <!-- ══════════════════════════════════════════
-         3. ANTECEDENTES PERSONALES PATOLÓGICOS
-         ══════════════════════════════════════════ -->
-    <section class="form-section">
-      <h2 class="section-title">3. Antecedentes Personales Patológicos</h2>
-
-      <table class="med-table">
-        <thead>
-          <tr>
-            <th class="col-label"></th>
-            <th class="col-yn">Sí</th>
-            <th class="col-yn">No</th>
-            <th class="col-desc">Descripción del suceso</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">Hospitalizaciones</th>
-            <td class="rc"><input type="radio" name="hospitalizaciones" value="true"  class="cr" data-target="hospitalizaciones_desc" aria-label="Hospitalizaciones: Sí"></td>
-            <td class="rc"><input type="radio" name="hospitalizaciones" value="false" class="cr" data-target="hospitalizaciones_desc" aria-label="Hospitalizaciones: No"></td>
-            <td><textarea name="hospitalizaciones_descripcion" id="hospitalizaciones_desc" rows="2" class="tbl-ta" disabled></textarea></td>
-          </tr>
-          <tr>
-            <th scope="row">Quirúrgicos</th>
-            <td class="rc"><input type="radio" name="quirurgicos" value="true"  class="cr" data-target="quirurgicos_desc" aria-label="Quirúrgicos: Sí"></td>
-            <td class="rc"><input type="radio" name="quirurgicos" value="false" class="cr" data-target="quirurgicos_desc" aria-label="Quirúrgicos: No"></td>
-            <td><textarea name="quirurgicos_descripcion" id="quirurgicos_desc" rows="2" class="tbl-ta" disabled></textarea></td>
-          </tr>
-          <tr>
-            <th scope="row">Alérgicos</th>
-            <td class="rc"><input type="radio" name="alergicos" value="true"  class="cr" data-target="alergicos_desc" aria-label="Alérgicos: Sí"></td>
-            <td class="rc"><input type="radio" name="alergicos" value="false" class="cr" data-target="alergicos_desc" aria-label="Alérgicos: No"></td>
-            <td><textarea name="alergicos_descripcion" id="alergicos_desc" rows="2" class="tbl-ta" disabled></textarea></td>
-          </tr>
-          <tr>
-            <th scope="row">Enfermedades actuales</th>
-            <td class="rc"><input type="radio" name="enfermedades_actuales" value="true"  class="cr" data-target="enfermedades_desc" aria-label="Enfermedades actuales: Sí"></td>
-            <td class="rc"><input type="radio" name="enfermedades_actuales" value="false" class="cr" data-target="enfermedades_desc" aria-label="Enfermedades actuales: No"></td>
-            <td><textarea name="enfermedades_actuales_descripcion" id="enfermedades_desc" rows="2" class="tbl-ta" disabled></textarea></td>
-          </tr>
-          <tr>
-            <th scope="row">Traumatismos</th>
-            <td class="rc"><input type="radio" name="traumatismos" value="true"  class="cr" data-target="traumatismos_desc" aria-label="Traumatismos: Sí"></td>
-            <td class="rc"><input type="radio" name="traumatismos" value="false" class="cr" data-target="traumatismos_desc" aria-label="Traumatismos: No"></td>
-            <td><textarea name="traumatismos_descripcion" id="traumatismos_desc" rows="2" class="tbl-ta" disabled></textarea></td>
-          </tr>
-          <tr>
-            <th scope="row">Convulsiones</th>
-            <td class="rc"><input type="radio" name="convulsiones" value="true"  class="cr" data-target="convulsiones_desc" aria-label="Convulsiones: Sí"></td>
-            <td class="rc"><input type="radio" name="convulsiones" value="false" class="cr" data-target="convulsiones_desc" aria-label="Convulsiones: No"></td>
-            <td><textarea name="convulsiones_descripcion" id="convulsiones_desc" rows="2" class="tbl-ta" disabled></textarea></td>
-          </tr>
-          <tr>
-            <th scope="row">Transfusiones sanguíneas</th>
-            <td class="rc"><input type="radio" name="transfusiones" value="true"  class="cr" data-target="transfusiones_desc" aria-label="Transfusiones: Sí"></td>
-            <td class="rc"><input type="radio" name="transfusiones" value="false" class="cr" data-target="transfusiones_desc" aria-label="Transfusiones: No"></td>
-            <td><textarea name="transfusiones_descripcion" id="transfusiones_desc" rows="2" class="tbl-ta" disabled></textarea></td>
-          </tr>
-          <tr>
-            <th scope="row">Consumo de sustancias <small>(incluidos tabaco y alcohol)</small></th>
-            <td class="rc"><input type="radio" name="sustancias" value="true"  class="cr" data-target="sustancias_desc" aria-label="Consumo de sustancias: Sí"></td>
-            <td class="rc"><input type="radio" name="sustancias" value="false" class="cr" data-target="sustancias_desc" aria-label="Consumo de sustancias: No"></td>
-            <td><textarea name="sustancias_descripcion" id="sustancias_desc" rows="2" class="tbl-ta" disabled></textarea></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <!-- Medicamentos y Salud Mental -->
-      <div class="inline-qs">
-
-        <div class="iq">
-          <div class="iq-row">
-            <span class="iq-label">¿Se encuentra tomando algún medicamento?</span>
-            <div class="iq-radios">
-              <label><input type="radio" name="toma_medicamento" value="true"> Sí</label>
-              <label><input type="radio" name="toma_medicamento" value="false"> No</label>
+          <div class="hf-card">
+            <div class="hf-header">
+              <span class="hf-name">Madre</span>
+              <div class="yn-toggle">
+                <label><input type="radio" name="madre_vive" value="true"><span class="yn-btn yn-si">Sí</span></label>
+                <label><input type="radio" name="madre_vive" value="false"><span class="yn-btn yn-no">No</span></label>
+              </div>
+            </div>
+            <div class="hf-body">
+              <label>Enfermedades actuales y/o causa de defunción</label>
+              <input type="text" name="madre_descripcion">
             </div>
           </div>
-          <div class="iq-extra" id="medicamentos_wrap">
-            <label for="medicamentos_dosis">¿Cuáles? <small>(especificar dosis)</small></label>
-            <textarea id="medicamentos_dosis" name="medicamentos_dosis" rows="3"></textarea>
-          </div>
-        </div>
 
-        <div class="iq">
-          <div class="iq-row">
-            <span class="iq-label">¿Ha recibido tratamientos previos de Salud Mental?</span>
-            <div class="iq-radios">
-              <label><input type="radio" name="tratamientos_salud_mental" value="true"> Sí</label>
-              <label><input type="radio" name="tratamientos_salud_mental" value="false"> No</label>
+          <div class="hf-card">
+            <div class="hf-header">
+              <span class="hf-name">Padre</span>
+              <div class="yn-toggle">
+                <label><input type="radio" name="padre_vive" value="true"><span class="yn-btn yn-si">Sí</span></label>
+                <label><input type="radio" name="padre_vive" value="false"><span class="yn-btn yn-no">No</span></label>
+              </div>
+            </div>
+            <div class="hf-body">
+              <label>Enfermedades actuales y/o causa de defunción</label>
+              <input type="text" name="padre_descripcion">
             </div>
           </div>
-          <div class="iq-extra" id="tratamientos_wrap">
-            <label for="tratamientos_especificar">Especificar</label>
-            <textarea id="tratamientos_especificar" name="tratamientos_salud_mental_especificar" rows="3"></textarea>
+
+          <div class="hf-card">
+            <div class="hf-header">
+              <span class="hf-name">Hermanos</span>
+              <div class="yn-toggle">
+                <label><input type="radio" name="hermanos_vive" value="true"><span class="yn-btn yn-si">Sí</span></label>
+                <label><input type="radio" name="hermanos_vive" value="false"><span class="yn-btn yn-no">No</span></label>
+              </div>
+            </div>
+            <div class="hf-body">
+              <label>Enfermedades actuales y/o causa de defunción</label>
+              <input type="text" name="hermanos_descripcion">
+            </div>
           </div>
+
+          <div class="hf-card">
+            <div class="hf-header">
+              <span class="hf-name">Abuelo Paterno</span>
+              <div class="yn-toggle">
+                <label><input type="radio" name="abuelo_paterno_vive" value="true"><span class="yn-btn yn-si">Sí</span></label>
+                <label><input type="radio" name="abuelo_paterno_vive" value="false"><span class="yn-btn yn-no">No</span></label>
+              </div>
+            </div>
+            <div class="hf-body">
+              <label>Enfermedades actuales y/o causa de defunción</label>
+              <input type="text" name="abuelo_paterno_descripcion">
+            </div>
+          </div>
+
+          <div class="hf-card">
+            <div class="hf-header">
+              <span class="hf-name">Abuela Paterna</span>
+              <div class="yn-toggle">
+                <label><input type="radio" name="abuela_paterna_vive" value="true"><span class="yn-btn yn-si">Sí</span></label>
+                <label><input type="radio" name="abuela_paterna_vive" value="false"><span class="yn-btn yn-no">No</span></label>
+              </div>
+            </div>
+            <div class="hf-body">
+              <label>Enfermedades actuales y/o causa de defunción</label>
+              <input type="text" name="abuela_paterna_descripcion">
+            </div>
+          </div>
+
+          <div class="hf-card">
+            <div class="hf-header">
+              <span class="hf-name">Abuelo Materno</span>
+              <div class="yn-toggle">
+                <label><input type="radio" name="abuelo_materno_vive" value="true"><span class="yn-btn yn-si">Sí</span></label>
+                <label><input type="radio" name="abuelo_materno_vive" value="false"><span class="yn-btn yn-no">No</span></label>
+              </div>
+            </div>
+            <div class="hf-body">
+              <label>Enfermedades actuales y/o causa de defunción</label>
+              <input type="text" name="abuelo_materno_descripcion">
+            </div>
+          </div>
+
+          <div class="hf-card">
+            <div class="hf-header">
+              <span class="hf-name">Abuela Materna</span>
+              <div class="yn-toggle">
+                <label><input type="radio" name="abuela_materna_vive" value="true"><span class="yn-btn yn-si">Sí</span></label>
+                <label><input type="radio" name="abuela_materna_vive" value="false"><span class="yn-btn yn-no">No</span></label>
+              </div>
+            </div>
+            <div class="hf-body">
+              <label>Enfermedades actuales y/o causa de defunción</label>
+              <input type="text" name="abuela_materna_descripcion">
+            </div>
+          </div>
+
         </div>
-
+      </section>
+      <div class="step-nav">
+        <button type="button" class="btn btn-prev" data-goto="1">← Anterior</button>
+        <button type="button" class="btn btn-next" data-goto="3">Siguiente →</button>
       </div>
-    </section>
+    </div>
 
-    <div class="form-actions">
-      <button type="reset"  class="btn btn-reset">Limpiar</button>
-      <button type="submit" class="btn btn-submit">Guardar</button>
+    <!-- ══════════════════════════════════
+         PASO 3 · ANTECEDENTES PERSONALES PATOLÓGICOS
+         ══════════════════════════════════ -->
+    <div class="step-panel" id="panel-3">
+      <section class="form-section">
+        <h2 class="section-title">3. Antecedentes Personales Patológicos</h2>
+        <div class="card-grid">
+
+          <div class="ap-card">
+            <div class="ap-header">
+              <span class="ap-name">Hospitalizaciones</span>
+              <div class="yn-toggle">
+                <label><input type="radio" name="hospitalizaciones" value="true"  class="cond-t" data-body="hosp-body"><span class="yn-btn yn-si">Sí</span></label>
+                <label><input type="radio" name="hospitalizaciones" value="false" class="cond-f" data-body="hosp-body"><span class="yn-btn yn-no">No</span></label>
+              </div>
+            </div>
+            <div class="ap-body" id="hosp-body">
+              <label>Descripción del suceso</label>
+              <textarea name="hospitalizaciones_descripcion" rows="2"></textarea>
+            </div>
+          </div>
+
+          <div class="ap-card">
+            <div class="ap-header">
+              <span class="ap-name">Quirúrgicos</span>
+              <div class="yn-toggle">
+                <label><input type="radio" name="quirurgicos" value="true"  class="cond-t" data-body="quir-body"><span class="yn-btn yn-si">Sí</span></label>
+                <label><input type="radio" name="quirurgicos" value="false" class="cond-f" data-body="quir-body"><span class="yn-btn yn-no">No</span></label>
+              </div>
+            </div>
+            <div class="ap-body" id="quir-body">
+              <label>Descripción del suceso</label>
+              <textarea name="quirurgicos_descripcion" rows="2"></textarea>
+            </div>
+          </div>
+
+          <div class="ap-card">
+            <div class="ap-header">
+              <span class="ap-name">Alérgicos</span>
+              <div class="yn-toggle">
+                <label><input type="radio" name="alergicos" value="true"  class="cond-t" data-body="aler-body"><span class="yn-btn yn-si">Sí</span></label>
+                <label><input type="radio" name="alergicos" value="false" class="cond-f" data-body="aler-body"><span class="yn-btn yn-no">No</span></label>
+              </div>
+            </div>
+            <div class="ap-body" id="aler-body">
+              <label>Descripción del suceso</label>
+              <textarea name="alergicos_descripcion" rows="2"></textarea>
+            </div>
+          </div>
+
+          <div class="ap-card">
+            <div class="ap-header">
+              <span class="ap-name">Enfermedades actuales</span>
+              <div class="yn-toggle">
+                <label><input type="radio" name="enfermedades_actuales" value="true"  class="cond-t" data-body="enf-body"><span class="yn-btn yn-si">Sí</span></label>
+                <label><input type="radio" name="enfermedades_actuales" value="false" class="cond-f" data-body="enf-body"><span class="yn-btn yn-no">No</span></label>
+              </div>
+            </div>
+            <div class="ap-body" id="enf-body">
+              <label>Descripción del suceso</label>
+              <textarea name="enfermedades_actuales_descripcion" rows="2"></textarea>
+            </div>
+          </div>
+
+          <div class="ap-card">
+            <div class="ap-header">
+              <span class="ap-name">Traumatismos</span>
+              <div class="yn-toggle">
+                <label><input type="radio" name="traumatismos" value="true"  class="cond-t" data-body="trau-body"><span class="yn-btn yn-si">Sí</span></label>
+                <label><input type="radio" name="traumatismos" value="false" class="cond-f" data-body="trau-body"><span class="yn-btn yn-no">No</span></label>
+              </div>
+            </div>
+            <div class="ap-body" id="trau-body">
+              <label>Descripción del suceso</label>
+              <textarea name="traumatismos_descripcion" rows="2"></textarea>
+            </div>
+          </div>
+
+          <div class="ap-card">
+            <div class="ap-header">
+              <span class="ap-name">Convulsiones</span>
+              <div class="yn-toggle">
+                <label><input type="radio" name="convulsiones" value="true"  class="cond-t" data-body="conv-body"><span class="yn-btn yn-si">Sí</span></label>
+                <label><input type="radio" name="convulsiones" value="false" class="cond-f" data-body="conv-body"><span class="yn-btn yn-no">No</span></label>
+              </div>
+            </div>
+            <div class="ap-body" id="conv-body">
+              <label>Descripción del suceso</label>
+              <textarea name="convulsiones_descripcion" rows="2"></textarea>
+            </div>
+          </div>
+
+          <div class="ap-card">
+            <div class="ap-header">
+              <span class="ap-name">Transfusiones sanguíneas</span>
+              <div class="yn-toggle">
+                <label><input type="radio" name="transfusiones" value="true"  class="cond-t" data-body="trans-body"><span class="yn-btn yn-si">Sí</span></label>
+                <label><input type="radio" name="transfusiones" value="false" class="cond-f" data-body="trans-body"><span class="yn-btn yn-no">No</span></label>
+              </div>
+            </div>
+            <div class="ap-body" id="trans-body">
+              <label>Descripción del suceso</label>
+              <textarea name="transfusiones_descripcion" rows="2"></textarea>
+            </div>
+          </div>
+
+          <div class="ap-card">
+            <div class="ap-header">
+              <span class="ap-name">Consumo de sustancias <small>(tabaco y alcohol)</small></span>
+              <div class="yn-toggle">
+                <label><input type="radio" name="sustancias" value="true"  class="cond-t" data-body="sust-body"><span class="yn-btn yn-si">Sí</span></label>
+                <label><input type="radio" name="sustancias" value="false" class="cond-f" data-body="sust-body"><span class="yn-btn yn-no">No</span></label>
+              </div>
+            </div>
+            <div class="ap-body" id="sust-body">
+              <label>Descripción del suceso</label>
+              <textarea name="sustancias_descripcion" rows="2"></textarea>
+            </div>
+          </div>
+
+          <div class="ap-card">
+            <div class="ap-header">
+              <span class="ap-name">¿Se encuentra tomando algún medicamento?</span>
+              <div class="yn-toggle">
+                <label><input type="radio" name="toma_medicamento" value="true"  class="cond-t" data-body="med-body"><span class="yn-btn yn-si">Sí</span></label>
+                <label><input type="radio" name="toma_medicamento" value="false" class="cond-f" data-body="med-body"><span class="yn-btn yn-no">No</span></label>
+              </div>
+            </div>
+            <div class="ap-body" id="med-body">
+              <label for="medicamentos_dosis">¿Cuáles? <small>(especificar dosis)</small></label>
+              <textarea id="medicamentos_dosis" name="medicamentos_dosis" rows="3"></textarea>
+            </div>
+          </div>
+
+          <div class="ap-card">
+            <div class="ap-header">
+              <span class="ap-name">¿Ha recibido tratamientos previos de Salud Mental?</span>
+              <div class="yn-toggle">
+                <label><input type="radio" name="tratamientos_salud_mental" value="true"  class="cond-t" data-body="trat-body"><span class="yn-btn yn-si">Sí</span></label>
+                <label><input type="radio" name="tratamientos_salud_mental" value="false" class="cond-f" data-body="trat-body"><span class="yn-btn yn-no">No</span></label>
+              </div>
+            </div>
+            <div class="ap-body" id="trat-body">
+              <label for="tratamientos_especificar">Especificar</label>
+              <textarea id="tratamientos_especificar" name="tratamientos_salud_mental_especificar" rows="3"></textarea>
+            </div>
+          </div>
+
+        </div>
+      </section>
+      <div class="step-nav">
+        <button type="button" class="btn btn-prev" data-goto="2">← Anterior</button>
+        <div class="step-nav-end">
+          <button type="reset"  class="btn btn-reset">Limpiar</button>
+          <button type="submit" class="btn btn-submit">Guardar</button>
+        </div>
+      </div>
     </div>
 
   </form>
@@ -334,7 +458,7 @@
   <footer class="doc-footer">
     <p>aqui ponemos informacion de la clinica</p>
     <p>centrado bonito, telefonos o algo</p>
-     <p>a menos que no sean los pasientes quienes lo llenan</p>
+    <p>a menos que no sean los pacientes quienes lo llenan</p>
   </footer>
 
 </div>

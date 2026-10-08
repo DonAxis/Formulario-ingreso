@@ -1,55 +1,98 @@
 'use strict';
 
-// ── Set today's date in header by default
+// ── Fecha de hoy en encabezado
 const fechaHeader = document.querySelector('[name="encabezado_fecha"]');
 if (fechaHeader && !fechaHeader.value) {
   fechaHeader.value = new Date().toISOString().slice(0, 10);
 }
 
-// ── Section 3: enable/disable description textarea on Sí/No
-document.querySelectorAll('.cr').forEach(radio => {
-  radio.addEventListener('change', function () {
-    const ta = document.getElementById(this.dataset.target);
-    if (!ta) return;
-    if (this.value === 'true') {
-      ta.disabled = false;
-      ta.focus();
-    } else {
-      ta.disabled = true;
-      ta.value = '';
+// ══════════════════════════════════════════
+// NAVEGACIÓN POR PASOS
+// ══════════════════════════════════════════
+let currentStep = 1;
+
+function goStep(n) {
+  const prevBtn  = document.querySelector(`.step-btn[data-step="${currentStep}"]`);
+  const nextBtn  = document.querySelector(`.step-btn[data-step="${n}"]`);
+  const prevLine = prevBtn?.nextElementSibling;
+
+  // Marcar paso anterior como completado si avanzamos
+  if (n > currentStep) {
+    prevBtn?.classList.add('done');
+    if (prevLine?.classList.contains('step-line')) prevLine.classList.add('done');
+  } else {
+    // Quitar done si retrocedemos
+    for (let i = n; i <= 3; i++) {
+      document.querySelector(`.step-btn[data-step="${i}"]`)?.classList.remove('done');
+      const line = document.querySelector(`.step-btn[data-step="${i}"]`)?.nextElementSibling;
+      if (line?.classList.contains('step-line')) line.classList.remove('done');
     }
+  }
+
+  document.getElementById(`panel-${currentStep}`).classList.remove('active');
+  document.querySelector(`.step-btn[data-step="${currentStep}"]`).classList.remove('active');
+
+  currentStep = n;
+
+  document.getElementById(`panel-${n}`).classList.add('active');
+  nextBtn?.classList.add('active');
+
+  document.querySelector('.stepper')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// Clic en los círculos del stepper
+document.querySelectorAll('.step-btn[data-step]').forEach(btn => {
+  btn.addEventListener('click', () => goStep(Number(btn.dataset.step)));
+});
+
+// Botones Siguiente / Anterior
+document.querySelectorAll('[data-goto]').forEach(btn => {
+  btn.addEventListener('click', () => goStep(Number(btn.dataset.goto)));
+});
+
+// ══════════════════════════════════════════
+// TOGGLE Sí / No — estado visual
+// ══════════════════════════════════════════
+document.querySelectorAll('.yn-toggle input[type="radio"]').forEach(radio => {
+  radio.addEventListener('change', function () {
+    const toggle = this.closest('.yn-toggle');
+    toggle.querySelectorAll('.yn-btn').forEach(b => b.classList.remove('selected'));
+    this.nextElementSibling.classList.add('selected');
   });
 });
 
-// ── Show/hide conditional panels (medicamentos & salud mental)
-function bindPanel(radioName, panelId) {
-  const panel = document.getElementById(panelId);
-  if (!panel) return;
-  document.querySelectorAll(`[name="${radioName}"]`).forEach(radio => {
-    radio.addEventListener('change', function () {
-      const show = this.value === 'true';
-      panel.classList.toggle('open', show);
-      if (show) {
-        const first = panel.querySelector('input, textarea');
-        if (first) first.focus();
-      } else {
-        panel.querySelectorAll('input, textarea').forEach(el => { el.value = ''; });
-      }
-    });
+// ══════════════════════════════════════════
+// CAMPOS CONDICIONALES — Sección 3
+// Muestra la descripción solo cuando se selecciona Sí
+// ══════════════════════════════════════════
+document.querySelectorAll('.cond-t').forEach(radio => {
+  radio.addEventListener('change', function () {
+    const body = document.getElementById(this.dataset.body);
+    if (!body) return;
+    body.classList.add('open');
+    body.querySelector('input, textarea')?.focus();
   });
-}
+});
 
-bindPanel('toma_medicamento',         'medicamentos_wrap');
-bindPanel('tratamientos_salud_mental', 'tratamientos_wrap');
+document.querySelectorAll('.cond-f').forEach(radio => {
+  radio.addEventListener('change', function () {
+    const body = document.getElementById(this.dataset.body);
+    if (!body) return;
+    body.classList.remove('open');
+    body.querySelectorAll('input, textarea').forEach(el => { el.value = ''; });
+  });
+});
 
-// ── Tutor field becomes required when patient is a minor
+// ══════════════════════════════════════════
+// TUTOR obligatorio si es menor de edad
+// ══════════════════════════════════════════
 const edadInput  = document.getElementById('edad');
 const tutorInput = document.getElementById('nombre_tutor');
 const tutorLabel = tutorInput?.closest('.fg')?.querySelector('label');
 
 if (edadInput && tutorInput) {
   edadInput.addEventListener('input', function () {
-    const age = parseInt(this.value, 10);
+    const age     = parseInt(this.value, 10);
     const isMinor = !isNaN(age) && age < 18;
     tutorInput.required = isMinor;
     if (tutorLabel) {
@@ -60,16 +103,15 @@ if (edadInput && tutorInput) {
   });
 }
 
-// ── Form submit: build JSON payload
+// ══════════════════════════════════════════
+// SUBMIT — construye JSON y lo muestra en consola
+// ══════════════════════════════════════════
 document.getElementById('fc2')?.addEventListener('submit', function (e) {
   e.preventDefault();
-  if (!this.checkValidity()) {
-    this.reportValidity();
-    return;
-  }
+  if (!this.checkValidity()) { this.reportValidity(); return; }
   const payload = buildPayload();
   console.log('FC2 – Historia Clínica\n', JSON.stringify(payload, null, 2));
-  alert('Formulario guardado correctamente.\nRevisa la consola del navegador (F12) para ver el JSON.');
+  alert('Formulario guardado. Revisa la consola (F12) para ver el JSON.');
 });
 
 function val(name) {
@@ -118,14 +160,14 @@ function buildPayload() {
     ],
     antecedentes_personales_patologicos: {
       condiciones: [
-        { condicion: 'Hospitalizaciones',        presente: radioVal('hospitalizaciones'),      descripcion: val('hospitalizaciones_descripcion') || null },
-        { condicion: 'Quirúrgicos',              presente: radioVal('quirurgicos'),            descripcion: val('quirurgicos_descripcion') || null },
-        { condicion: 'Alérgicos',               presente: radioVal('alergicos'),              descripcion: val('alergicos_descripcion') || null },
-        { condicion: 'Enfermedades actuales',   presente: radioVal('enfermedades_actuales'),  descripcion: val('enfermedades_actuales_descripcion') || null },
-        { condicion: 'Traumatismos',            presente: radioVal('traumatismos'),           descripcion: val('traumatismos_descripcion') || null },
-        { condicion: 'Convulsiones',            presente: radioVal('convulsiones'),           descripcion: val('convulsiones_descripcion') || null },
-        { condicion: 'Transfusiones sanguíneas',presente: radioVal('transfusiones'),          descripcion: val('transfusiones_descripcion') || null },
-        { condicion: 'Consumo de sustancias',   presente: radioVal('sustancias'),             descripcion: val('sustancias_descripcion') || null },
+        { condicion: 'Hospitalizaciones',         presente: radioVal('hospitalizaciones'),      descripcion: val('hospitalizaciones_descripcion') || null },
+        { condicion: 'Quirúrgicos',               presente: radioVal('quirurgicos'),            descripcion: val('quirurgicos_descripcion') || null },
+        { condicion: 'Alérgicos',                presente: radioVal('alergicos'),              descripcion: val('alergicos_descripcion') || null },
+        { condicion: 'Enfermedades actuales',    presente: radioVal('enfermedades_actuales'),  descripcion: val('enfermedades_actuales_descripcion') || null },
+        { condicion: 'Traumatismos',             presente: radioVal('traumatismos'),           descripcion: val('traumatismos_descripcion') || null },
+        { condicion: 'Convulsiones',             presente: radioVal('convulsiones'),           descripcion: val('convulsiones_descripcion') || null },
+        { condicion: 'Transfusiones sanguíneas', presente: radioVal('transfusiones'),          descripcion: val('transfusiones_descripcion') || null },
+        { condicion: 'Consumo de sustancias',    presente: radioVal('sustancias'),             descripcion: val('sustancias_descripcion') || null },
       ],
       medicacion_actual: {
         toma_medicamento:  radioVal('toma_medicamento'),
@@ -135,9 +177,6 @@ function buildPayload() {
         recibio_tratamiento:     radioVal('tratamientos_salud_mental'),
         especificar_tratamiento: val('tratamientos_salud_mental_especificar') || null,
       },
-    },
-    cierre: {
-      nombre_firma_paciente_tutor: val('firma_paciente_tutor'),
     },
   };
 }
